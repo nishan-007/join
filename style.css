@@ -1,0 +1,57 @@
+.background-div {
+    width: 1440px;
+    height: 1024px;
+    background: #F5F5F5;
+}
+
+.contacts-box {
+    position: absolute;
+    width: 453px;
+    height: 944px;
+    left: 232px;
+    top: 89px;
+    background: #FFFFFF;
+    box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
+}
+
+.contacts-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    position: absolute;
+    width: 357px;
+    height: 1072px;
+    left: 48px;
+    top: 2px;
+    background: #FFFFFF;
+}
+
+.scroll-beam {
+    position: absolute;
+    width: 0px;
+    height: 53px;
+    left: 425px;
+    top: 77px;
+    border: 7px solid #A8A8A8;
+    border-radius: 3px;
+}
+
+.new-contact {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+
+    position: absolute;
+    width: 193px;
+    height: 53px;
+    left: 1195px;
+    top: 904px;
+
+    background: #2A3647;
+    border: 1px solid #2A3647;
+    border-radius: 10px;
+}
