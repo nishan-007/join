@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="contacts.css">
+    <script src="contacts.js"></script>
 </head>
 
 <body>
@@ -15,7 +17,14 @@
             <div class="contacts-div"></div>
             <div class="scroll-beam"></div>
         </div>
-        <div class="new-contact">New Contact</div>
+        <div id="new-contact" class="overlay-new-contact">
+            <div class=""></div>
+            <div></div>
+        </div>
+        <button class="new-contact" onclick="openNewContact()">
+            <h3 class="new-contact-name">New contact</h3>
+            <img class="capa" src="./img/Capa 1.png">
+        </button>
     </div>
 
 </body>

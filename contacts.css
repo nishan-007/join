@@ -1,13 +1,16 @@
+body {
+    overflow-x: hidden;
+}
 .background-div {
-    width: 1440px;
-    height: 1024px;
+    width: 100vw;
+    height: 100vh;
     background: #F5F5F5;
 }
 
 .contacts-box {
     position: absolute;
     width: 453px;
-    height: 944px;
+    height: 92.4vh;
     left: 232px;
     top: 89px;
     background: #FFFFFF;
@@ -21,7 +24,7 @@
     padding: 0px;
     position: absolute;
     width: 357px;
-    height: 1072px;
+    height: 92vh;
     left: 48px;
     top: 2px;
     background: #FFFFFF;
@@ -48,10 +51,43 @@
     position: absolute;
     width: 193px;
     height: 53px;
-    left: 1195px;
+    right: 52px;
     top: 904px;
 
     background: #2A3647;
     border: 1px solid #2A3647;
     border-radius: 10px;
+    cursor: pointer;
 }
+
+.overlay-new-contact {
+    position: absolute;
+    right: 16vh;
+    top: 20vh;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 66vw;
+    height: 53vh;
+    background-color: white;
+    transform: translateX(79vw);
+    transition: all 225ms ease-in-out;
+    border-radius: 30px;
+}
+
+.show-overlay-menu {
+    transform: translateX(0);
+}
+
+.new-contact-name {
+    line-height: 120%;
+    font-weight: 700;
+    font-family: inter;
+    color: white;
+    height: 25px;
+    width: 130px;
+    font-size: 20px;
+}
+
