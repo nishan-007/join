@@ -18,8 +18,47 @@
             <div class="scroll-beam"></div>
         </div>
         <div id="new-contact" class="overlay-new-contact">
-            <div class=""></div>
-            <div></div>
+            <div class="new-contact-overlay-left">
+                <img src="./img/Capa.png">
+                <h2 class="add-contact-overlay">Add contact</h2>
+                <h4 class="new-contact-overlay-text">Tasks are better with a team!</h4>
+            </div>
+            <div class="new-contact-overlay">
+                <img src="./img/Vector.png" class="close-x" onclick="closeOverlay()">
+                <div>
+                    <img class="new-contact-overlay-img" src="./img/Frame 79.png">
+                </div>
+                <div class="new-contact-overlay-input">
+                    <div class="overlay-input-div">
+                        <div class="input-overlay-div">
+                            <input class="overlay-input" placeholder="Name">
+                            <img src="./img/Vector-name.png" class="overlay-input-name-img">
+                        </div>
+                    </div>
+                    <div class="overlay-input-div">
+                        <div class="input-overlay-div">
+                            <input class="overlay-input" placeholder="Email">
+                            <img src="./img/Vector-email.png" class="overlay-input-name-img">
+                        </div>
+                    </div>
+                    <div class="overlay-input-div">
+                        <div class="input-overlay-div">
+                            <input class="overlay-input" placeholder="Phone">
+                            <img src="./img/Vector-phone.png" class="overlay-input-name-img">
+                        </div>
+                    </div>
+                    <div class="overlay-contact-button">
+                        <button class="overlay-button-cancel-div" onclick="closeOverlay()">
+                            <h3 class="overlay-button-cancel">Cancel</h3>
+                            <img src="./img/Vector.png">
+                        </button>
+                        <button class="overlay-button-create-contact-div">
+                            <h3 class="overlay-button-create-contact">Create contact</h3>
+                            <img src="./img/Vector-ok.png">
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
         <button class="new-contact" onclick="openNewContact()">
             <h3 class="new-contact-name">New contact</h3>

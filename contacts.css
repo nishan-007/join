@@ -1,6 +1,8 @@
 body {
     overflow-x: hidden;
+    margin: 0;
 }
+
 .background-div {
     width: 100vw;
     height: 100vh;
@@ -47,13 +49,11 @@ body {
     align-items: center;
     padding: 18px 10px;
     gap: 10px;
-
     position: absolute;
     width: 193px;
     height: 53px;
     right: 52px;
     top: 904px;
-
     background: #2A3647;
     border: 1px solid #2A3647;
     border-radius: 10px;
@@ -62,17 +62,17 @@ body {
 
 .overlay-new-contact {
     position: absolute;
-    right: 16vh;
-    top: 20vh;
+    right: 50vh;
+    top: 25vh;
     z-index: 2;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    width: 66vw;
-    height: 53vh;
-    background-color: white;
-    transform: translateX(79vw);
+    justify-content: flex-end;
+    width: 1212px;
+    height: 594px;
+    background: #FFFFFF;
+    transform: translateX(94vw);
     transition: all 225ms ease-in-out;
     border-radius: 30px;
 }
@@ -91,3 +91,208 @@ body {
     font-size: 20px;
 }
 
+.new-contact-overlay-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 12px;
+    isolation: isolate;
+    position: absolute;
+    width: 463px;
+    height: 594px;
+    left: 0px;
+    top: 0px;
+    background: #2A3647;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    padding-left: 40px;
+}
+
+.add-contact-overlay {
+    flex: none;
+    flex-grow: 0;
+    z-index: 0;
+    color: #FFFFFF;
+    width: 366px;
+    height: 73px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 61px;
+    line-height: 120%;
+    margin: 0;
+}
+
+.new-contact-overlay-text {
+    margin: 0;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 27px;
+    line-height: 120%;
+    width: 371px;
+    height: 32px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    z-index: 1;
+    color: #FFFFFF;
+}
+
+.new-contact-overlay-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.new-contact-overlay-img {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+    isolation: isolate;
+    position: absolute;
+    width: 121px;
+    height: 120px;
+    left: 533px;
+    top: 204px;
+    background: #FFFFFF;
+    border: 3px solid #FFFFFF;
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 10%);
+    border-radius: 70px;
+}
+
+.overlay-input-div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+    width: 422px;
+    height: 71px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin-right: 50px;
+}
+
+.overlay-input {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 13px 21px;
+    gap: 10px;
+    width: 422px;
+    height: 51px;
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    cursor: pointer;
+}
+
+.overlay-contact-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.overlay-button-cancel-div {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 136px;
+    height: 61px;
+    border: 1px solid #2A3647;
+    border-radius: 10px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    background-color: white;
+}
+
+.overlay-button-cancel {
+    width: 69px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    color: #2A3647;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    cursor: pointer;
+}
+
+.overlay-button-create-contact-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 208px;
+    height: 61px;
+    background: #2A3647;
+    border-radius: 10px;
+    flex: none;
+    order: 1;
+    margin-right: 50px;
+    cursor: pointer;
+}
+
+.overlay-button-create-contact {
+    width: 154px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.input-overlay-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+    width: 380px;
+    height: 25px;
+    flex: none;
+    order: 0;
+}
+
+.overlay-input-name-img {
+    margin-left: -50px;
+}
+
+.close-x {
+    height: 20px;
+    top: 26px;
+    position: absolute;
+    right: 0;
+    margin-right: 50px;
+    cursor: pointer;
+}
