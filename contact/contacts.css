@@ -304,10 +304,11 @@ body {
 
 .contacts {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: 15px 25px;
-    gap: 35px;
+    gap: 10px;
     width: 357px;
     height: 79px;
     background: #FFFFFF;
@@ -315,6 +316,7 @@ body {
     flex: none;
     order: 2;
     flex-grow: 0;
+    cursor: pointer;
 }
 
 .contacts-div-box {
@@ -367,4 +369,36 @@ body {
 .contact-data {
     width: 63vw;
     height: 57vh;
+}
+
+.contactlist-name {
+    width: 200px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    display: flex;
+    align-items: center;
+    color: #000000;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.contactlist-email {
+    width: 200px;
+    height: 19px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    display: flex;
+    align-items: center;
+    color: #007CEE;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
 }
