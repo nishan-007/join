@@ -2,7 +2,8 @@ let contacts = [];
 
 async function initContacts() {
     await downloadFromServer();
-    loadContacts();
+    await loadContacts();
+    renderContacts();
 }
 
 
@@ -18,13 +19,37 @@ function createContact() {
     };
 
     contacts.push(contact);
-    addUser()
+    addUser();
+    renderContacts();
     deleteValue(name, email, phone);
     console.log(contacts);
 
-    document.getElementById('contacts').innerHTML += templateHTML(contact);
+    openContactData();
+}
 
-    document.getElementById('new-contact').classList.remove('show-overlay-menu');
+function renderContacts() {
+    document.getElementById('contacts').innerHTML += '';
+
+    for (let i = 0; i < contacts.length; i++) {
+        const contact = contacts[i];
+        document.getElementById('contacts').innerHTML += templateHTML(contact, i);
+        document.getElementById('new-contact').classList.remove('show-overlay-menu');
+    }
+}
+
+function openContactData(i) {
+        const contactdata = contacts[i];
+        document.getElementById('contact-data').innerHTML += contactDataHTML(contactdata);
+}
+
+function contactDataHTML(contactdata) {
+    return`
+        <div>
+            <div class="contact-data-name">${contactdata['name']}</div>   
+            <div class="contact-data-email">${contactdata['email']}</div>  
+            <div class="contact-data-phone">${contactdata['phone']}</div> 
+        </div>
+    `
 }
 
 
@@ -43,15 +68,6 @@ function deleteValue(name, email, phone) {
 
 
 /**
- * this function load contacts from the backend
- * 
- */
-function loadContacts() {
-    contacts = JSON.parse(backend.getItem('contact')) || [];
-}
-
-
-/**
  * this function save contacts to the backend
  * 
  */
@@ -60,9 +76,18 @@ async function addUser() {
 }
 
 
-function templateHTML(contact) {
+/**
+ * this function load contacts from the backend
+ * 
+ */
+async function loadContacts() {
+    contacts = JSON.parse(backend.getItem('contact')) || [];
+}
+
+
+function templateHTML(contact, i) {
     return `
-        <div class="contacts">
+        <div class="contacts" onclick="openContactData(${i})">
             <div class="contactlist-name">
                 ${contact['name']}
             </div>

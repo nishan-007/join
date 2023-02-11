@@ -13,27 +13,19 @@ body {
 }
 
 .contacts-box {
-    position: absolute;
-    width: 453px;
-    height: 92.4vh;
-    left: 232px;
-    top: 89px;
-    background: #FFFFFF;
-    box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
-    z-index: 1;
-}
-
-.contacts-div {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0px;
     position: absolute;
-    width: 357px;
-    height: 92vh;
-    left: 48px;
-    top: 2px;
+    width: 453px;
+    height: 91.8vh;
+    left: 232px;
+    top: 89px;
     background: #FFFFFF;
+    box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
+    z-index: 1;
+    overflow: auto;
 }
 
 .scroll-beam {
@@ -321,7 +313,7 @@ body {
 
 .contacts-div-box {
     width: 63vw;
-    height: 93vh;
+    height: 91.8vh;
     position: absolute;
     top: 8vh;
     left: 37vw;
@@ -336,6 +328,7 @@ body {
     font-size: 61px;
     line-height: 120%;
     color: #000000;
+    margin: 0;
 }
 
 .better-with {
@@ -350,13 +343,14 @@ body {
     flex: none;
     order: 2;
     flex-grow: 0;
+    margin: 0;
 }
 
 .contacts-div-box-name {
     display: flex;
     justify-content: center;
     align-items: center;
-    left: 900px;
+    left: 100px;
     position: absolute;
     top: 45px;
 }
@@ -367,8 +361,11 @@ body {
 }
 
 .contact-data {
+    top: 176px;
+    position: absolute;
     width: 63vw;
-    height: 57vh;
+    height: 59vh;
+    
 }
 
 .contactlist-name {
@@ -398,6 +395,54 @@ body {
     display: flex;
     align-items: center;
     color: #007CEE;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.contact-data-name {
+    width: 400px;
+    height: 56px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 47px;
+    line-height: 120%;
+    display: flex;
+    align-items: center;
+    color: #000000;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.contact-data-email {
+    width: 250px;
+    height: 19px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    display: flex;
+    align-items: center;
+    color: #007CEE;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.contact-data-phone {
+    width: 200px;
+    height: 19px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    display: flex;
+    align-items: center;
+    color: #000000;
     flex: none;
     order: 1;
     flex-grow: 0;
