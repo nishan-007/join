@@ -1,4 +1,6 @@
 let contacts = [];
+let letters = [];
+
 
 async function initContacts() {
     await downloadFromServer();
@@ -22,34 +24,53 @@ function createContact() {
     addUser();
     renderContacts();
     deleteValue(name, email, phone);
-    console.log(contacts);
-
     openContactData();
+    console.log(contacts);
 }
 
-function renderContacts() {
-    document.getElementById('contacts').innerHTML += '';
+
+function renderContacts(filter) {
+    let content = document.getElementById('contacts');
+    content.innerHTML = '';
 
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
-        document.getElementById('contacts').innerHTML += templateHTML(contact, i);
-        document.getElementById('new-contact').classList.remove('show-overlay-menu');
+        const firstLetter = contact['name'].charAt(0);
+
+        if (!filter || filter == firstLetter) {
+            content.innerHTML += templateHTML(contact, i);
+        }
+
+        if (!letters.includes(firstLetter)) {
+            letters.push(firstLetter);
+        }
     }
+
+    document.getElementById('new-contact').classList.remove('show-overlay-menu');
+    
+    renderLetters();
 }
+
 
 function openContactData(i) {
         const contactdata = contacts[i];
         document.getElementById('contact-data').innerHTML += contactDataHTML(contactdata);
 }
 
-function contactDataHTML(contactdata) {
-    return`
-        <div>
-            <div class="contact-data-name">${contactdata['name']}</div>   
-            <div class="contact-data-email">${contactdata['email']}</div>  
-            <div class="contact-data-phone">${contactdata['phone']}</div> 
-        </div>
-    `
+
+function setFilter(letter) {
+    renderContacts(letter);
+}
+
+
+function renderLetters() {
+    let letterbox = document.getElementById(`letterbox`);
+    letterbox.innerHTML = '';
+
+    for (let i = 0; i < letters.length; i++) {
+        const letter = letters[i];
+        letterbox.innerHTML += `<div class="letter">${letter}</div>`;
+    }
 }
 
 
@@ -87,13 +108,27 @@ async function loadContacts() {
 
 function templateHTML(contact, i) {
     return `
-        <div class="contacts" onclick="openContactData(${i})">
-            <div class="contactlist-name">
-                ${contact['name']}
+        <div class="letterbox" id="letterbox"></div>
+            <div class="contacts">
+                <div onclick="openContactData(${i})">
+                    <div class="contactlist-name">
+                        ${contact['name']}
+                    </div>
+                    <div class="contactlist-email">
+                        ${contact['email']}
+                    </div>
+                </div>
             </div>
-            <div class="contactlist-email">
-                ${contact['email']}
-            </div>
+    `
+}
+
+
+function contactDataHTML(contactdata) {
+    return`
+        <div> 
+            <div class="contact-data-name">${contactdata['name']}</div>
+            <div class="contact-data-email">${contactdata['email']}</div>  
+            <div class="contact-data-phone">${contactdata['phone']}</div> 
         </div>
     `
 }
