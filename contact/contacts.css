@@ -365,7 +365,7 @@ body {
     position: absolute;
     width: 63vw;
     height: 59vh;
-    
+
 }
 
 .contactlist-name {
@@ -414,6 +414,7 @@ body {
     flex: none;
     order: 0;
     flex-grow: 0;
+    margin-left: 281px;
 }
 
 .contact-data-email {
@@ -430,6 +431,8 @@ body {
     flex: none;
     order: 1;
     flex-grow: 0;
+    margin-left: 220px;
+    cursor: pointer;
 }
 
 .contact-data-phone {
@@ -445,5 +448,61 @@ body {
     color: #000000;
     flex: none;
     order: 1;
+    margin-left: 220px;
+    position: relative;
+}
+
+.add-task-div {
+    display: flex;
+    align-items: center;
+}
+
+.add-task {
+    width: 100px;
+    height: 19px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    display: flex;
+    align-items: center;
+    color: #29ABE2;
+    flex: none;
+    order: 1;
     flex-grow: 0;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.add-task-img {
+    margin-left: 281px;
+}
+
+.contact-first-last-name {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    left: 0px;
+    top: 0px;
+    background: #FF7A00;
+    border-radius: 180px;
+    left: 100px;
+}
+
+.contact-information {
+    width: 207px;
+    height: 74px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    display: flex;
+    align-items: center;
+    color: #000000;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin-left: 281px;
 }
