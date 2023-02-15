@@ -31,50 +31,22 @@ function createContact() {
 }
 
 
-function renderContacts(filter) {
+function renderContacts() {
     let content = document.getElementById('contacts');
     content.innerHTML = '';
 
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
-        const firstLetter = contact['first-name'].charAt(0);
-
-        if (!filter || filter == firstLetter) {
             content.innerHTML += templateHTML(contact, i);
-        }
-
-        if (!letters.includes(firstLetter)) {
-            letters.push(firstLetter);
-        }
-        
-        renderLetters(i);
-
-    }
 
     document.getElementById('new-contact').classList.remove('show-overlay-menu');
     
 }
-
+}
 
 function openContactData(i) {
         const contactdata = contacts[i];
         document.getElementById('contact-data').innerHTML += contactDataHTML(contactdata);
-}
-
-
-function setFilter(letter) {
-    renderContacts(letter);
-}
-
-
-function renderLetters(i) {
-    let letterbox = document.getElementById(`letterbox${i}`);
-    letterbox.innerHTML = ''; 
-
-    for (let i = 0; i < letters.length; i++) {
-        const letter = letters[i];
-        letterbox.innerHTML = `<div class="letter">${letter}</div>`;
-    }
 }
 
 
@@ -113,8 +85,10 @@ async function loadContacts() {
 
 function templateHTML(contact, i) {
     return `
-            <div class="contacts">
-            <div class="letterbox" id="letterbox${i}"></div>
+        <div class="contacts">
+            <div class="letterbox" id="letterbox${i}">
+                ${contact['first-name'].charAt(0)}
+                ${contact['last-name'].charAt(0)}
                 <div onclick="openContactData(${i})">
                     <span class="contactlist-name">
                         ${contact['first-name']}
@@ -125,6 +99,7 @@ function templateHTML(contact, i) {
                     </a>
                 </div>
             </div>
+        </div>
     `
 }
 
@@ -132,7 +107,10 @@ function templateHTML(contact, i) {
 function contactDataHTML(contactdata) {
     return`
         <div> 
-        <div class="contact-first-last-name">TY</div>
+        <div class="contact-first-last-name">
+            ${contactdata['first-name'].charAt(0)}
+            ${contactdata['last-name'].charAt(0)}
+        </div>
             <span class="contact-data-name">
                 ${contactdata['first-name']}
                 ${contactdata['last-name']}
