@@ -47,11 +47,12 @@ function renderContacts(filter) {
             letters.push(firstLetter);
         }
         
+        renderLetters(i);
+
     }
 
     document.getElementById('new-contact').classList.remove('show-overlay-menu');
     
-    renderLetters();
 }
 
 
@@ -66,13 +67,13 @@ function setFilter(letter) {
 }
 
 
-function renderLetters() {
-    let letterbox = document.getElementById(`letterbox`);
-    letterbox.innerHTML = '';
+function renderLetters(i) {
+    let letterbox = document.getElementById(`letterbox${i}`);
+    letterbox.innerHTML = ''; 
 
     for (let i = 0; i < letters.length; i++) {
         const letter = letters[i];
-        letterbox.innerHTML += `<div class="letter">${letter}</div>`;
+        letterbox.innerHTML = `<div class="letter">${letter}</div>`;
     }
 }
 
@@ -112,8 +113,8 @@ async function loadContacts() {
 
 function templateHTML(contact, i) {
     return `
-        <div class="letterbox" id="letterbox"></div>
             <div class="contacts">
+            <div class="letterbox" id="letterbox${i}"></div>
                 <div onclick="openContactData(${i})">
                     <span class="contactlist-name">
                         ${contact['first-name']}
