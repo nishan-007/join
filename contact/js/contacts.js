@@ -1,5 +1,4 @@
 let contacts = [];
-let letters = [];
 
 
 async function initContacts() {
@@ -37,16 +36,18 @@ function renderContacts() {
 
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
-            content.innerHTML += templateHTML(contact, i);
+        content.innerHTML += templateHTML(contact, i);
 
-    document.getElementById('new-contact').classList.remove('show-overlay-menu');
-    
-}
+        document.getElementById('new-contact').classList.remove('show-overlay-menu');
+
+    }
 }
 
 function openContactData(i) {
-        const contactdata = contacts[i];
-        document.getElementById('contact-data').innerHTML += contactDataHTML(contactdata);
+    const contactdata = contacts[i];
+    document.getElementById('contact-data').innerHTML = contactDataHTML(contactdata);
+
+    editContact(i);
 }
 
 
@@ -85,11 +86,15 @@ async function loadContacts() {
 
 function templateHTML(contact, i) {
     return `
-        <div class="contacts">
+        <div class="contacts" onclick="openContactData(${i})">
             <div class="letterbox" id="letterbox${i}">
-                ${contact['first-name'].charAt(0)}
-                ${contact['last-name'].charAt(0)}
-                <div onclick="openContactData(${i})">
+                <div class="latterbox-contact-div">
+                    <div class="latterbox-contact">
+                        ${contact['first-name'].charAt(0)}
+                        ${contact['last-name'].charAt(0)}
+                    </div>
+                </div>
+                <div class="openContact">
                     <span class="contactlist-name">
                         ${contact['first-name']}
                         ${contact['last-name']}
@@ -105,23 +110,34 @@ function templateHTML(contact, i) {
 
 
 function contactDataHTML(contactdata) {
-    return`
+    return `
         <div> 
-        <div class="contact-first-last-name">
-            ${contactdata['first-name'].charAt(0)}
-            ${contactdata['last-name'].charAt(0)}
-        </div>
-            <span class="contact-data-name">
-                ${contactdata['first-name']}
-                ${contactdata['last-name']}
-            </span>
-            <div class="add-task-div">
-                <img class="add-task-img" src="./img/Group 11.png">
-                <a hraf="#" class="add-task">Add Task</a>
+            <div class="contact-first-last-name-div">
+                <div class="contact-first-last-name">
+                    ${contactdata['first-name'].charAt(0)}
+                    ${contactdata['last-name'].charAt(0)}
+                </div>
             </div>
-            <span class="contact-information">Contact Information</span>
-            <a class="contact-data-email">${contactdata['email']}</a>  
-            <div class="contact-data-phone">${contactdata['phone']}</div> 
+                <span class="contact-data-name">
+                    ${contactdata['first-name']}
+                    ${contactdata['last-name']}
+                </span>
+                <div class="add-task-div">
+                    <img class="add-task-img" src="./img/Group 11.png">
+                    <a hraf="#" class="add-task">Add Task</a>
+                </div>
+                    <div class="contact-information-edit">
+                        <span class="contact-information">Contact Information</span>
+                        <span clas="edit-contact" onclick="editContact()"><img class="edit-contact-img" src="./img/Group 8.png">Edit Contact</span>
+                    </div>
+                    <div class="email-div">
+                        <span class="email">Email</span>
+                        <div class="contact-data-email">${contactdata['email']}</div>
+                    </div>
+                    <div class="phone-div">
+                        <span class="phone">Phone</span>  
+                        <div class="contact-data-phone">${contactdata['phone']}</div>
+                    </div> 
         </div>
     `
 }
