@@ -1,4 +1,5 @@
 let contacts = [];
+let colors = [];
 
 
 async function initContacts() {
@@ -30,6 +31,22 @@ function createContact() {
 }
 
 
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < colors.length; i++) {
+       color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+
+function setRandomColor(i) {
+    let letterbox = document.getElementById(`letterbox-contact-div${i}`);
+    letterbox.style.backgroundColor = getRandomColor();
+}
+
+
 function renderContacts() {
     let content = document.getElementById('contacts');
     content.innerHTML = '';
@@ -39,15 +56,13 @@ function renderContacts() {
         content.innerHTML += templateHTML(contact, i);
 
         document.getElementById('new-contact').classList.remove('show-overlay-menu');
-
     }
+    setRandomColor();
 }
 
 function openContactData(i) {
     const contactdata = contacts[i];
     document.getElementById('contact-data').innerHTML = contactDataHTML(contactdata);
-
-    editContact(i);
 }
 
 
@@ -63,6 +78,11 @@ function deleteValue(firstName, lastName, email, phone) {
     lastName.value = '';
     email.value = '';
     phone.value = '';
+}
+
+function editContact() {
+    const contactdata = contacts[i];
+    document.getElementById('contact-data').innerHTML = contactDataHTML(contactdata);
 }
 
 
@@ -88,7 +108,7 @@ function templateHTML(contact, i) {
     return `
         <div class="contacts" onclick="openContactData(${i})">
             <div class="letterbox" id="letterbox${i}">
-                <div class="latterbox-contact-div">
+                <div class="latterbox-contact-div" id="letterbox-contact-div${i}">
                     <div class="latterbox-contact">
                         ${contact['first-name'].charAt(0)}
                         ${contact['last-name'].charAt(0)}
@@ -112,7 +132,7 @@ function templateHTML(contact, i) {
 function contactDataHTML(contactdata) {
     return `
         <div> 
-            <div class="contact-first-last-name-div">
+            <div class="contact-first-last-name-div" id="contact-first-last-name-div">
                 <div class="contact-first-last-name">
                     ${contactdata['first-name'].charAt(0)}
                     ${contactdata['last-name'].charAt(0)}
@@ -128,7 +148,7 @@ function contactDataHTML(contactdata) {
                 </div>
                     <div class="contact-information-edit">
                         <span class="contact-information">Contact Information</span>
-                        <span clas="edit-contact" onclick="editContact()"><img class="edit-contact-img" src="./img/Group 8.png">Edit Contact</span>
+                        <button clas="edit-contact" onclick="editContact()"><img class="edit-contact-img" src="./img/Group 8.png">Edit Contact</button>
                     </div>
                     <div class="email-div">
                         <span class="email">Email</span>

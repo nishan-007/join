@@ -372,7 +372,6 @@ body {
     position: absolute;
     width: 63vw;
     height: 59vh;
-
 }
 
 .contactlist-name {
@@ -495,7 +494,6 @@ body {
     height: 120px;
     left: 0px;
     top: 0px;
-    background: #FF7A00;
     border-radius: 180px;
     left: 100px;
     display: flex;
@@ -573,7 +571,6 @@ body {
     box-sizing: border-box;
     width: 42px;
     height: 42px;
-    background: #FF7A00;
     border: 1px solid #FFFFFF;
     border-radius: 180px;
     display: flex;
