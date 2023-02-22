@@ -1,10 +1,9 @@
 let contacts = [];
-let colors = [];
-
 
 async function initContacts() {
     await downloadFromServer();
     await loadContacts();
+    await includeHTML()
     renderContacts();
 }
 
@@ -16,34 +15,56 @@ function createContact() {
     let phone = document.getElementById('phone');
 
     let contact = {
-        "first-name": firstName.value,
-        "last-name": lastName.value,
+        "firstName": firstName.value,
+        "lastName": lastName.value,
         "email": email.value,
-        "phone": phone.value
+        "phone": phone.value,
+        "color": getRandomColor()
     };
 
     contacts.push(contact);
     addUser();
-    renderContacts();
     deleteValue(firstName, lastName, email, phone);
     openContactData();
+    getRandomColor();
+    compareStrings(a, b);
     console.log(contacts);
 }
+
+
+async function includeHTML() {
+    let includeElements = document.querySelectorAll('[w3-include-html]');
+    for (let i = 0; i < includeElements.length; i++) {
+        const element = includeElements[i];
+        let file = element.getAttribute("w3-include-html"); // "includes/header.html"
+        let resp = await fetch(file);
+        if (resp.ok) {
+            element.innerHTML = await resp.text();
+        } else {
+            element.innerHTML = 'Page not found';
+        }
+    }
+}
+
+function compareStrings(a, b) {
+    a = a.toLowerCase();
+    b = b.toLowerCase();
+
+    return (a < b) ? -1 : (a > b) ? 1 : 0;
+}
+
+contacts.sort(function (a, b) {
+    return compareStrings(a.firstName, b.firstName);
+})
 
 
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
     var color = '#';
-    for (var i = 0; i < colors.length; i++) {
-       color += letters[Math.floor(Math.random() * 16)];
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
-}
-
-
-function setRandomColor(i) {
-    let letterbox = document.getElementById(`letterbox-contact-div${i}`);
-    letterbox.style.backgroundColor = getRandomColor();
 }
 
 
@@ -54,15 +75,20 @@ function renderContacts() {
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
         content.innerHTML += templateHTML(contact, i);
-
-        document.getElementById('new-contact').classList.remove('show-overlay-menu');
+        document.getElementById(`letterbox-contact-div${i}`).style.backgroundColor = contacts[i]["color"];
     }
-    setRandomColor();
+}
+
+
+function editContact(i) {
+    const editdata = contacts[i];
+    document.getElementById('edit-contact').innerHTML = editContactHTML(editdata, i);
 }
 
 function openContactData(i) {
     const contactdata = contacts[i];
-    document.getElementById('contact-data').innerHTML = contactDataHTML(contactdata);
+    document.getElementById('contact-data').innerHTML = contactDataHTML(contactdata, i);
+    document.getElementById(`contact-first-last-name-div${i}`).style.backgroundColor = contacts[i]["color"];
 }
 
 
@@ -78,11 +104,6 @@ function deleteValue(firstName, lastName, email, phone) {
     lastName.value = '';
     email.value = '';
     phone.value = '';
-}
-
-function editContact() {
-    const contactdata = contacts[i];
-    document.getElementById('contact-data').innerHTML = contactDataHTML(contactdata);
 }
 
 
@@ -106,6 +127,8 @@ async function loadContacts() {
 
 function templateHTML(contact, i) {
     return `
+        <div class="alphabetic${i}"></div>
+        <div><img src="./img/Vector 10.png"></div>
         <div class="contacts" onclick="openContactData(${i})">
             <div class="letterbox" id="letterbox${i}">
                 <div class="latterbox-contact-div" id="letterbox-contact-div${i}">
@@ -129,10 +152,10 @@ function templateHTML(contact, i) {
 }
 
 
-function contactDataHTML(contactdata) {
+function contactDataHTML(contactdata, i) {
     return `
         <div> 
-            <div class="contact-first-last-name-div" id="contact-first-last-name-div">
+            <div class="contact-first-last-name-div" id="contact-first-last-name-div${i}">
                 <div class="contact-first-last-name">
                     ${contactdata['first-name'].charAt(0)}
                     ${contactdata['last-name'].charAt(0)}
@@ -148,7 +171,7 @@ function contactDataHTML(contactdata) {
                 </div>
                     <div class="contact-information-edit">
                         <span class="contact-information">Contact Information</span>
-                        <button clas="edit-contact" onclick="editContact()"><img class="edit-contact-img" src="./img/Group 8.png">Edit Contact</button>
+                        <button class="edit-contact" onclick="editContact()"><img class="edit-contact-img" src="./img/Group 8.png">Edit Contact</button>
                     </div>
                     <div class="email-div">
                         <span class="email">Email</span>
@@ -160,4 +183,24 @@ function contactDataHTML(contactdata) {
                     </div> 
         </div>
     `
+}
+
+
+function editContactHTML(editdata, i) {
+    return`
+        <div class="edit-box">
+            <div class="edit-box-left">
+                <img>
+                <h2>Edit contact</h2>
+            </div>
+            <div>
+            <div class="edit-name-token"></div>
+            <input class="edit-input">
+            <input class="edit-input">
+            <input class="edit-input">
+            <input class="edit-input">
+            </div>
+            <button class="edit-save"></button>
+        </div>
+                    `
 }

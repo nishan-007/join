@@ -8,25 +8,28 @@
     <title>Join</title>
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="contacts.css">
+    <link rel="stylesheet" href="nav-sidebar.css">
     <script src="./js/contacts.js"></script>
     <script src="./js/overlay.js"></script>
     <script src="./js/mini_backend.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
         setURL('https://gruppenarbeit-join-454.developerakademie.net/smallest_backend_ever')
     </script>
 </head>
 
 <body onload="initContacts()">
+    <div w3-include-html="nav-sidebar.html"></div>
     <div class="background-div">
         <div class="contacts-box" id="contacts"></div>
-        <div class="contacts-div-box" id="contacts-div-box">
+        <div class="contacts-div-box" id="contacts-div-box" onclick="closeContactData()">
             <div class="contacts-div-box-name">
                 <h3 class="contacts-name">Contacts</h3>
                 <img class="contacts-name-img" src="./img/Vector 5.png">
                 <h4 class="better-with">Better with a team</h4>
             </div>
             <div class="contact-data" id="contact-data"></div>
+            <div class="edit-contact" id="edit-contact"></div>
+            </div>
         </div>
     </div>
     <div id="new-contact" class="overlay-new-contact">

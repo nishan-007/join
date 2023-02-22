@@ -24,7 +24,7 @@ body {
     position: absolute;
     width: 453px;
     height: 91.8vh;
-    left: 232px;
+    left: 208px;
     top: 89px;
     background: #FFFFFF;
     box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
@@ -374,6 +374,10 @@ body {
     height: 59vh;
 }
 
+.contact-data-overlay {
+    transform: translateX(0);
+}
+
 .contactlist-name {
     width: 200px;
     height: 25px;
@@ -407,7 +411,7 @@ body {
 }
 
 .contact-data-name {
-    width: 400px;
+    width: 540px;
     height: 56px;
     font-family: 'Inter';
     font-style: normal;
@@ -504,9 +508,8 @@ body {
 .contact-first-last-name {
     position: absolute;
     width: 80px;
-    height: 28.57px;
-    left: 20px;
-    top: 45.71px; 
+    height: 30px;
+    left: 25px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
@@ -542,7 +545,7 @@ body {
     align-items: center;
 }
 
-.edit-contact {
+.edit-contact-button {
     width: 170px;
     height: 37px;
     font-family: 'Inter';
@@ -638,6 +641,104 @@ body {
     display: flex;
     align-items: center;
     color: #000000;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.alphabetic {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    width: 357px;
+    height: 60px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.edit-box {
+    position: absolute;
+    right: 10vh;
+    top: 17vh;
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: 1212px;
+    height: 594px;
+    background: #FFFFFF;
+}
+
+.edit-box-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 12px;
+    isolation: isolate;
+    position: absolute;
+    width: 463px;
+    height: 594px;
+    left: 0px;
+    top: 0px;
+    background: #2A3647;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    padding-left: 40px;
+}
+
+.edit-name-token {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+    isolation: isolate;
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    left: 533px;
+    top: 204px;
+    background: #FFFFFF;
+    border: 3px solid #FFFFFF;
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 10%);
+    border-radius: 70px;
+}
+
+.edit-input {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 13px 21px;
+    gap: 10px;
+    width: 422px;
+    height: 51px;
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.edit-save {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 143px;
+    height: 61px;
+    background: #2A3647;
+    border-radius: 10px;
     flex: none;
     order: 0;
     flex-grow: 0;
