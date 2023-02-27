@@ -1,6 +1,7 @@
 body {
     overflow-x: hidden;
     margin: 0;
+    font-family: inter;
 }
 
 .d-none {
@@ -23,9 +24,9 @@ body {
     padding: 0px;
     position: absolute;
     width: 453px;
-    height: 91.8vh;
-    left: 208px;
-    top: 89px;
+    height: 93vh;
+    left: 232px;
+    top: 76px;
     background: #FFFFFF;
     box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
     z-index: 1;
@@ -154,10 +155,10 @@ body {
     gap: 10px;
     isolation: isolate;
     position: absolute;
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
     left: 533px;
-    top: 204px;
+    top: 200px;
     background: #FFFFFF;
     border: 3px solid #FFFFFF;
     box-shadow: 0px 0px 4px rgb(0 0 0 / 10%);
@@ -300,22 +301,25 @@ body {
 
 .contacts {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 15px 25px;
-    gap: 35px;
-    width: 357px;
-    height: 79px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 10px;
+    gap: 10px;
+    width: 100%;
+    height: 135px;
     background: #FFFFFF;
     border-radius: 10px;
     flex: none;
     order: 3;
     flex-grow: 0;
-    cursor: pointer;
 }
 
-.contacts-box :hover {
-    background-color: lightgray;
+.contacts-div-line {
+    width: 100%;
+}
+
+.contacts :hover {
+    background-color: whitesmoke
 }
 
 .contacts-div-box {
@@ -327,28 +331,27 @@ body {
 }
 
 .contacts-name {
-    width: 274px;
-    height: 73px;
+    width: 320px;
+    height: 90px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
-    font-size: 61px;
+    font-size: 70px;
     line-height: 120%;
     color: #000000;
     margin: 0;
 }
 
 .better-with {
-    width: 270px;
-    height: 32px;
+    width: 360px;
+    height: 45px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 27px;
+    font-size: 40px;
     line-height: 120%;
     color: #2A3647;
     flex: none;
-    order: 2;
     flex-grow: 0;
     margin: 0;
 }
@@ -379,19 +382,18 @@ body {
 }
 
 .contactlist-name {
-    width: 200px;
+    width: 235px;
     height: 25px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 21px;
+    font-size: 25px;
     line-height: 120%;
     display: flex;
     align-items: center;
     color: #000000;
-    flex: none;
     order: 0;
-    flex-grow: 0;
+    margin-bottom: 10px;
 }
 
 .contactlist-email {
@@ -400,14 +402,12 @@ body {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 120%;
     display: flex;
     align-items: center;
     color: #007CEE;
-    flex: none;
     order: 1;
-    flex-grow: 0;
 }
 
 .contact-data-name {
@@ -496,13 +496,14 @@ body {
     position: absolute;
     width: 120px;
     height: 120px;
-    left: 0px;
     top: 0px;
     border-radius: 180px;
     left: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
+    font-size: 45px;
 }
 
 .contact-first-last-name {
@@ -568,27 +569,29 @@ body {
 .letterbox {
     display: flex;
     align-items: center;
+    cursor: pointer;
+    height: 70px;
+    border-radius: 10px;
+    width: 100%;
 }
 
 .latterbox-contact-div {
+    font-size: 20px;
+    margin-left: 15px;
     box-sizing: border-box;
-    width: 42px;
-    height: 42px;
+    width: 60px;
+    height: 60px;
     border: 1px solid #FFFFFF;
     border-radius: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #FFFFFF;
 }
 
 .latterbox-contact {
-    width: 28px;
-    height: 10px;
     font-family: 'Inter';
     font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 120%;
     display: flex;
     align-items: center;
     text-align: center;
@@ -596,7 +599,7 @@ body {
 }
 
 .openContact {
-    margin-left: 40px;
+    margin-left: 20px;
 }
 
 .email-div {
@@ -672,6 +675,8 @@ body {
     width: 1212px;
     height: 594px;
     background: #FFFFFF;
+    border-radius: 30px;
+
 }
 
 .edit-box-left {
@@ -726,6 +731,7 @@ body {
     flex: none;
     order: 0;
     flex-grow: 0;
+    margin-bottom: 20px;
 }
 
 .edit-save {
@@ -742,4 +748,29 @@ body {
     flex: none;
     order: 0;
     flex-grow: 0;
+}
+
+.edit-input-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 50px;
+}
+
+.letter{
+    font-size: 20px;
+}
+
+.edit-contact {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+}
+
+.contact-information-img {
+    margin-left: 70px;
+    width: 30px;
+    cursor: pointer;
 }
