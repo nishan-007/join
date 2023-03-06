@@ -28,7 +28,7 @@
                 <h4 class="better-with">Better with a team</h4>
             </div>
             <div class="contact-data" id="contact-data"></div>
-            <div class="edit-contact" id="edit-contact"> </div>
+            <div class="edit-contact" id="edit-contact"></div>
         </div>
     </div>
     </div>
@@ -65,7 +65,7 @@
                     </div>
                     <div class="overlay-input-div">
                         <div class="input-overlay-div">
-                            <input required type="tel" min="0" class="overlay-input" placeholder="Phone" id="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+                            <input required type="tel" min="0" class="overlay-input" placeholder="Phone" id="phone">
                             <img src="./img/Vector-phone.png" class="overlay-input-name-img">
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                             <h3 class="overlay-button-cancel">Cancel</h3>
                             <img src="./img/Vector.png">
                         </button>
-                        <button class="overlay-button-create-contact-div" onclick="createContact()">
+                        <button class="overlay-button-create-contact-div" id="overlay-button-create-contact-div" onclick="createContact()">
                             <h3 class="overlay-button-create-contact">Create contact</h3>
                             <img src="./img/Vector-ok.png">
                         </button>

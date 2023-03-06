@@ -377,6 +377,7 @@ body {
     height: 59vh;
 }
 
+
 .contact-data-overlay {
     transform: translateX(0);
 }
@@ -504,6 +505,7 @@ body {
     justify-content: center;
     color: white;
     font-size: 45px;
+    text-transform: capitalize;
 }
 
 .contact-first-last-name {
@@ -547,19 +549,15 @@ body {
 }
 
 .edit-contact-button {
-    width: 170px;
-    height: 37px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
-    line-height: 120%;
     display: flex;
     align-items: center;
     color: #2A3647;
-    flex: none;
-    order: 1;
-    flex-grow: 0;
+    border: none;
+    cursor: pointer;
 }
 
 .edit-contact-img {
@@ -587,6 +585,7 @@ body {
     align-items: center;
     justify-content: center;
     color: #FFFFFF;
+    text-transform: capitalize;
 }
 
 .latterbox-contact {
@@ -676,7 +675,6 @@ body {
     height: 594px;
     background: #FFFFFF;
     border-radius: 30px;
-
 }
 
 .edit-box-left {
@@ -714,6 +712,9 @@ body {
     border: 3px solid #FFFFFF;
     box-shadow: 0px 0px 4px rgb(0 0 0 / 10%);
     border-radius: 70px;
+    color: white;
+    font-size: 45px;
+    text-transform: capitalize;
 }
 
 .edit-input {
@@ -731,6 +732,13 @@ body {
     flex: none;
     order: 0;
     flex-grow: 0;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    cursor: text;
+    outline: none;
     margin-bottom: 20px;
 }
 
@@ -748,6 +756,7 @@ body {
     flex: none;
     order: 0;
     flex-grow: 0;
+    cursor: pointer;
 }
 
 .edit-input-field {
@@ -758,14 +767,14 @@ body {
     margin-right: 50px;
 }
 
-.letter{
+.letter {
     font-size: 20px;
+    text-transform: capitalize;
 }
 
 .edit-contact {
     display: flex;
     align-items: center;
-    cursor: pointer;
     border: none;
 }
 
@@ -773,4 +782,34 @@ body {
     margin-left: 70px;
     width: 30px;
     cursor: pointer;
+}
+
+.edit-save-button {
+    width: 123px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    text-align: center;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.edit-contact-name {
+    width: 361px;
+    height: 73px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 61px;
+    line-height: 120%;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    z-index: 0;
 }

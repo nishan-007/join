@@ -1,6 +1,6 @@
 let contacts = [];
 let deleteContacts = [];
-let indexContact = 0;
+let letters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 
 async function initContacts() {
     await downloadFromServer();
@@ -25,34 +25,26 @@ function createContact() {
         "id": new Date().getTime()
     });
 
-    addUser();
+    saveUsers();
     renderContacts();
     deleteValue(firstName, lastName, email, phone);
     openContactData();
-    editContact();
-    sortUserAlphabetically()
+    openEditContact();
+    deleteContact();
     console.log(contacts);
 }
 
 
 function deleteContact(i) {
     const contact = contacts[i];
+    document.getElementById('contact-data').innerHTML = '';
 
     deleteContacts.push(contact);
 
     contacts.splice(i, 1);
-   
+
     renderContacts()
-    addUser();
-}
-
-
-function sortUserAlphabetically() {
-    users.sort(function (a, b) {
-        if (a.name.renderContacts() < b.name.renderContacts()) return -1;
-        if (a.name.renderContacts() > b.name.renderContacts()) return 1;
-        return 0;
-    });
+    saveUsers();
 }
 
 
@@ -60,13 +52,34 @@ function renderContacts() {
     let content = document.getElementById('contacts');
     content.innerHTML = '';
 
+
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
         content.innerHTML += templateHTML(contact, i);
-        document.getElementById(`alphabetic${i}`).innerHTML = contacts[i]["first-name"].charAt(0);
         document.getElementById("new-contact").classList.remove("show-overlay-menu");
         document.getElementById(`letterbox-contact-div${i}`).style.backgroundColor = contacts[i]["color"];
+
+        sortAlphabetic(i);
     }
+}
+
+
+function sortAlphabetic(i) {
+    document.getElementById(`alphabetic${i}`).innerHTML = contacts[i]["first-name"].charAt(0);
+    contacts.sort((a, b) => {
+        let fa = a["first-name"].toLowerCase(),
+            fb = b["first-name"].toLowerCase();
+
+        if (fa < fb) {
+            return -1;
+        }
+        if (fa > fb) {
+            return 1;
+        }
+        return 0;
+    });
+    
+    console.log(contacts);
 }
 
 
@@ -77,31 +90,40 @@ function openContactData(i) {
 }
 
 
-async function editContact() {
-    let firstName = document.getElementById('first-name');
-    let lastName = document.getElementById('last-name')
-    let email = document.getElementById('email');
-    let phone = document.getElementById('phone');
+function openEditContact(i) {
+    const editcontactdata = contacts[i];
+    document.getElementById('edit-contact').innerHTML = editContactDataHTML(editcontactdata, i);
+    document.getElementById(`edit-name-token${i}`).style.backgroundColor = contacts[i]["color"];
+}
 
-    (contacts[indexContact].first_name = firstName.value),
-        (contacts[indexContact].second_name = lastName.value),
-        (contacts[indexContact].email = email.value),
-        (contacts[indexContact].phone = phone.value),
-        (contacts[indexContact].addetAt = new Date().getTime()),
-        await addUser(contacts);
+function editSave(i){
+    let firstName = document.getElementById(`edit-first-name${i}`);
+    let lastName = document.getElementById(`edit-last-name${i}`)
+    let email = document.getElementById(`edit-email${i}`);
+    let phone = document.getElementById(`edit-phone${i}`);
+    
+    contacts[i] = ({
+        "first-name": firstName.value,
+        "last-name": lastName.value,
+        "email": email.value,
+        "phone": phone.value,
+        "color": getRandomColor(),
+    });
 
-    deleteValue(firstName, lastName, email, phone);
+    document.getElementById('contact-data').innerHTML = '';
+
+    closeEdit();
     renderContacts();
+    saveUsers();
+    openContactData();
+}
+
+function closeEdit() {
+    document.getElementById('edit-contact').innerHTML = '';
 }
 
 
-/**
- * this function delete the inputfield
- * 
- * @param {string} name.value 
- * @param {string} email.value 
- * @param {string} phone.value 
- */
+
 function deleteValue(firstName, lastName, email, phone) {
     firstName.value = '';
     lastName.value = '';
@@ -139,7 +161,7 @@ function getRandomColor() {
  * this function save contacts to the backend
  * 
  */
-async function addUser() {
+async function saveUsers() {
     await backend.setItem('contact', JSON.stringify(contacts));
 }
 
@@ -180,7 +202,7 @@ function templateHTML(contact, i) {
 
 function contactDataHTML(contactdata, i) {
     return `
-        <div> 
+        <div class="contactdata"> 
             <div class="contact-first-last-name-div" id="contact-first-last-name-div${i}">
                     ${contactdata['first-name'].charAt(0)}
                     ${contactdata['last-name'].charAt(0)}
@@ -195,38 +217,45 @@ function contactDataHTML(contactdata, i) {
                 </div>
                     <div class="contact-information-edit">
                         <span class="contact-information">Contact Information</span>
-                        <button class="edit-contact" onclick="editContact()"><img class="edit-contact-img" src="./img/Group 8.png">Edit Contact</button>
+                        <button class="edit-contact-button" onclick="openEditContact(${i})"><img class="edit-contact-img" src="./img/Group 8.png">Edit Contact</button>
                         <img src="./img/delete-64.png" class="contact-information-img" id="deletecontact" onclick="deleteContact(${i})">
                     </div>
                     <div class="email-div">
                         <span class="email">Email</span>
-                        <div class="contact-data-email">${contactdata['email']}</div>
+                        <a href="mailto:${contactdata['email']}" class="contact-data-email">${contactdata['email']}</a>
                     </div>
                     <div class="phone-div">
                         <span class="phone">Phone</span>  
-                        <div class="contact-data-phone">${contactdata['phone']}</div>
+                        <a href="tel:${contactdata['phone']}" class="contact-data-phone">${contactdata['phone']}</a>
                     </div> 
         </div>
     `
 }
 
 
-function editContactHTML(editdata, i) {
+function editContactDataHTML(editcontactdata, i) {
     return `
-        <div class="edit-box">
-            <div class="edit-box-left">
-                <img>
-                <h2>Edit contact</h2>
+    <div class="edit-box" id="edit-box">
+    <img src="./img/Vector.png" class="close-x" onclick="closeEdit()">
+    <div class="edit-box-left">
+        <img src="./img/Capa.png">
+        <h2 class="edit-contact-name">Edit contact</h2>
+    </div>
+    <div class="edit-name-token" id="edit-name-token${i}">
+                ${editcontactdata['first-name'].charAt(0)}
+                ${editcontactdata['last-name'].charAt(0)}
+    </div>
+    <div class="edit-input-field" id="edit-input-field">
+            <div>
+                <input class="edit-input" id="edit-first-name${i}" value="${editcontactdata['first-name']}" placeholder="First-Name">
+                <input class="edit-input" id="edit-last-name${i}" value="${editcontactdata['last-name']}" placeholder="Last-Name">
+                <input class="edit-input" id="edit-email${i}" value="${editcontactdata['email']}" placeholder="Email">
+                <input class="edit-input" id="edit-phone${i}" value="${editcontactdata['phone']}" placeholder="Phone">
             </div>
-            <div class="edit-name-token" id="edit-name-token${i}">
-            </div>
-            <div class="edit-input-field">
-                <input class="edit-input">
-                <input class="edit-input">
-                <input class="edit-input">
-                <input class="edit-input">
-                <button class="edit-save">Safe</button>
-            </div>
-        </div>
-                    `
+        <button class="edit-save" id="edit-save" onclick="editSave(${i})">
+            <h3 class="edit-save-button">Save</h3>
+        </button>
+    </div>
+</div>
+    `
 }
